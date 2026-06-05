@@ -9,6 +9,8 @@
   --dad-2: #6ad2ff;
   --jain: #ff9f43;    /* 자인 = 웜오렌지 */
   --jain-2: #ffd25e;
+  --toge: #a78bfa;    /* 함께 = 라벤더 */
+  --toge-2: #c4b5fd;
   --na: #5a6072;      /* 미분류 */
   --short: #ff4d6d;   /* Shorts = 핫핑크 */
   --video: #38d39f;   /* 영상 = 민트 */
@@ -93,6 +95,7 @@ main {
 .who-tag { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; vertical-align: middle; }
 .who-tag.dad { background: rgba(79,140,255,.18); color: var(--dad-2); }
 .who-tag.jain { background: rgba(255,159,67,.18); color: var(--jain-2); }
+.who-tag.toge { background: rgba(167,139,250,.18); color: var(--toge-2); }
 .owner-bars { display: flex; flex-direction: column; gap: 18px; }
 .obar .obar-top { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 7px; }
 .obar .obar-top .name { font-weight: 700; }
@@ -115,10 +118,17 @@ main {
 .channel-list li::before { content: counter(ch); color: var(--faint); font-weight: 700; font-size: 13px; text-align: center; }
 .channel-list .cn { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .channel-list .cn .t { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; font-weight: 500; }
-.channel-list .badge { font-size: 10px; font-weight: 700; padding: 1px 7px; border-radius: 999px; flex: none; }
+.channel-list .badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px; flex: none; min-width: 42px; text-align: center;
+  border: 1px solid transparent; cursor: pointer; font-family: inherit; transition: transform .08s, box-shadow .15s; }
+.channel-list .badge:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,.35); }
+.channel-list .badge:active { transform: translateY(0); }
+.channel-list .badge.edited { border-color: currentColor; box-shadow: 0 0 0 2px rgba(255,255,255,.06); }
 .badge.dad { background: rgba(79,140,255,.16); color: var(--dad-2); }
 .badge.jain { background: rgba(255,159,67,.16); color: var(--jain-2); }
+.badge.toge { background: rgba(167,139,250,.18); color: var(--toge-2); }
 .badge.na { background: rgba(255,255,255,.06); color: var(--faint); }
+.reset-link { color: var(--dad-2); text-decoration: none; border-bottom: 1px dotted currentColor; }
+.reset-link:hover { color: #fff; }
 .channel-list .num { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .channel-list .num small { color: var(--faint); }
 

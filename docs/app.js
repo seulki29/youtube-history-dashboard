@@ -1,9 +1,9 @@
 const C = {
-  dad: '#4f8cff', jain: '#ff9f43', na: '#5a6072',
+  dad: '#4f8cff', jain: '#ff9f43', toge: '#a78bfa', na: '#5a6072',
   short: '#ff4d6d', video: '#38d39f',
   ink: '#f2f3f7', muted: '#9aa0b0', grid: 'rgba(255,255,255,.06)',
 };
-const ownerColor = o => (o === '아빠' ? C.dad : o === '자인' ? C.jain : C.na);
+const ownerColor = o => (o === '아빠' ? C.dad : o === '자인' ? C.jain : o === '함께' ? C.toge : C.na);
 const fmt = n => n.toLocaleString('ko-KR');
 const hrs = m => (m / 60);
 const fmtH = m => hrs(m) >= 10 ? Math.round(hrs(m)) : hrs(m).toFixed(1);
@@ -12,7 +12,31 @@ Chart.defaults.color = C.muted;
 Chart.defaults.font.family = 'Pretendard, sans-serif';
 Chart.defaults.font.size = 12;
 
-fetch('data.json').then(r => r.json()).then(render);
+// ── 수동 시청자 재지정(localStorage) ─────────────────────────────
+const OWNER_CYCLE = ['아빠', '자인', '함께', '미분류'];
+const OV_KEY = 'yth_owner_overrides';
+const getOverrides = () => { try { return JSON.parse(localStorage.getItem(OV_KEY)) || {}; } catch { return {}; } };
+const setOverrides = o => localStorage.setItem(OV_KEY, JSON.stringify(o));
+const effOwner = ch => getOverrides()[ch.name] || ch.owner;
+
+let DATA = null;
+
+// 기본 집계(owners)에서 top채널 재지정분을 반영해 재계산
+function computeOwners() {
+  const map = {};
+  DATA.owners.forEach(o => { map[o.owner] = { owner: o.owner, count: o.count, minutes: o.minutes }; });
+  const ov = getOverrides();
+  DATA.topChannels.forEach(ch => {
+    const cur = ov[ch.name];
+    if (!cur || cur === ch.owner) return;
+    if (map[ch.owner]) { map[ch.owner].count -= ch.count; map[ch.owner].minutes -= ch.minutes; }
+    if (!map[cur]) map[cur] = { owner: cur, count: 0, minutes: 0 };
+    map[cur].count += ch.count; map[cur].minutes += ch.minutes;
+  });
+  return OWNER_CYCLE.map(o => map[o] || { owner: o, count: 0, minutes: 0 });
+}
+
+fetch('data.json').then(r => r.json()).then(d => { DATA = d; render(d); });
 
 function render(d) {
   // 기간 / 생성일
@@ -35,12 +59,18 @@ function render(d) {
     </div>`).join('');
 
   renderTypeDonut(d);
-  renderOwners(d);
+  renderOwners();
   renderCategories(d);
   renderHour(d);
   renderDow(d);
   renderMonth(d);
-  renderChannels(d);
+  renderChannels();
+  document.getElementById('resetOwners').addEventListener('click', e => {
+    e.preventDefault();
+    localStorage.removeItem(OV_KEY);
+    renderOwners();
+    renderChannels();
+  });
 }
 
 /* Shorts vs 영상 도넛 */
@@ -63,10 +93,11 @@ function renderTypeDonut(d) {
     </div>`).join('');
 }
 
-/* 아빠 vs 자인 */
-function renderOwners(d) {
-  const max = Math.max(...d.owners.map(o => o.count));
-  document.getElementById('ownerBars').innerHTML = d.owners.map(o => `
+/* 아빠 vs 자인 — top채널 재지정분 반영 */
+function renderOwners() {
+  const owners = computeOwners();
+  const max = Math.max(...owners.map(o => o.count));
+  document.getElementById('ownerBars').innerHTML = owners.map(o => `
     <div class="obar">
       <div class="obar-top">
         <span class="name">${o.owner}</span>
@@ -74,9 +105,9 @@ function renderOwners(d) {
       </div>
       <div class="track"><div class="fill" style="width:${(o.count / max * 100).toFixed(1)}%;background:${ownerColor(o.owner)}"></div></div>
     </div>`).join('');
-  const na = d.owners.find(o => o.owner === '미분류');
+  const na = owners.find(o => o.owner === '미분류');
   document.getElementById('ownerNote').textContent =
-    `※ 미분류 ${fmt(na.count)}건은 대부분 Shorts입니다(채널이 매우 다양해 키워드로 시청자를 특정하기 어려움).`;
+    `※ 미분류 ${fmt(na.count)}건은 대부분 Shorts입니다(채널이 매우 다양해 키워드로 시청자를 특정하기 어려움). 아래 TOP 30 배지를 클릭해 직접 바꿀 수 있습니다.`;
 }
 
 /* 카테고리 가로 바 */
@@ -100,6 +131,7 @@ function renderHour(d) {
       datasets: [
         { label: '자인', data: d.hourly.map(h => h.owner['자인']), backgroundColor: C.jain, stack: 's' },
         { label: '아빠', data: d.hourly.map(h => h.owner['아빠']), backgroundColor: C.dad, stack: 's' },
+        { label: '함께', data: d.hourly.map(h => h.owner['함께'] || 0), backgroundColor: C.toge, stack: 's' },
         { label: '미분류', data: d.hourly.map(h => h.owner['미분류']), backgroundColor: C.na, stack: 's' },
       ],
     },
@@ -154,15 +186,32 @@ function renderMonth(d) {
   });
 }
 
-/* 채널 랭킹 */
-function renderChannels(d) {
-  const cls = o => o === '아빠' ? 'dad' : o === '자인' ? 'jain' : 'na';
-  document.getElementById('channelList').innerHTML = d.topChannels.map(c => `
+/* 채널 랭킹 — 배지 클릭으로 시청자 재지정 */
+const ownerCls = o => o === '아빠' ? 'dad' : o === '자인' ? 'jain' : o === '함께' ? 'toge' : 'na';
+function renderChannels() {
+  const list = document.getElementById('channelList');
+  list.innerHTML = DATA.topChannels.map((c, i) => {
+    const o = effOwner(c);
+    const changed = o !== c.owner;
+    return `
     <li>
       <span class="cn">
-        <span class="badge ${cls(c.owner)}">${c.owner}</span>
+        <button class="badge ${ownerCls(o)} ${changed ? 'edited' : ''}" data-i="${i}" title="클릭하여 시청자 변경 (아빠→자인→함께→미분류)">${o}</button>
         <span class="t" title="${c.name}">${c.name}</span>
       </span>
       <span class="num">${fmt(c.count)}건 <small>· ${fmtH(c.minutes)}h</small></span>
-    </li>`).join('');
+    </li>`;
+  }).join('');
+  list.querySelectorAll('.badge').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const c = DATA.topChannels[+btn.dataset.i];
+      const cur = effOwner(c);
+      const next = OWNER_CYCLE[(OWNER_CYCLE.indexOf(cur) + 1) % OWNER_CYCLE.length];
+      const ov = getOverrides();
+      if (next === c.owner) delete ov[c.name]; else ov[c.name] = next;
+      setOverrides(ov);
+      renderChannels();
+      renderOwners();
+    });
+  });
 }
