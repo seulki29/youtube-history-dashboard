@@ -1,0 +1,570 @@
+{
+  "meta": {
+    "total": 34200,
+    "from": "2026-02-13",
+    "to": "2026-06-05",
+    "days": 112,
+    "perDay": 305.4,
+    "uniqueChannels": 12109,
+    "totalMinutes": 42480,
+    "generatedAt": "2026-06-05",
+    "params": {
+      "SHORT_MAX_SEC": 75,
+      "SESSION_GAP_SEC": 1800,
+      "TAIL_SEC": 300
+    }
+  },
+  "types": {
+    "short": {
+      "count": 28021,
+      "minutes": 9418
+    },
+    "video": {
+      "count": 6179,
+      "minutes": 33062
+    }
+  },
+  "owners": [
+    {
+      "owner": "자인",
+      "count": 1670,
+      "minutes": 4999
+    },
+    {
+      "owner": "아빠",
+      "count": 6693,
+      "minutes": 11543
+    },
+    {
+      "owner": "미분류",
+      "count": 25837,
+      "minutes": 25938
+    }
+  ],
+  "categories": [
+    {
+      "cat": "기타",
+      "owner": "미분류",
+      "count": 25837,
+      "minutes": 25938
+    },
+    {
+      "cat": "축구·스포츠",
+      "owner": "아빠",
+      "count": 1678,
+      "minutes": 2292
+    },
+    {
+      "cat": "영화·리뷰",
+      "owner": "아빠",
+      "count": 1482,
+      "minutes": 2708
+    },
+    {
+      "cat": "뉴스·시사",
+      "owner": "아빠",
+      "count": 1086,
+      "minutes": 1914
+    },
+    {
+      "cat": "음악",
+      "owner": "아빠",
+      "count": 896,
+      "minutes": 2790
+    },
+    {
+      "cat": "괴수·특촬",
+      "owner": "자인",
+      "count": 888,
+      "minutes": 3496
+    },
+    {
+      "cat": "영어학습",
+      "owner": "아빠",
+      "count": 732,
+      "minutes": 996
+    },
+    {
+      "cat": "동물·파충류",
+      "owner": "자인",
+      "count": 604,
+      "minutes": 927
+    },
+    {
+      "cat": "과학·지식",
+      "owner": "아빠",
+      "count": 443,
+      "minutes": 619
+    },
+    {
+      "cat": "당구",
+      "owner": "아빠",
+      "count": 376,
+      "minutes": 223
+    },
+    {
+      "cat": "키즈·게임",
+      "owner": "자인",
+      "count": 178,
+      "minutes": 575
+    }
+  ],
+  "topChannels": [
+    {
+      "name": "무비띵크_Movie Think",
+      "count": 309,
+      "minutes": 829,
+      "owner": "아빠"
+    },
+    {
+      "name": "Kaiju Capi",
+      "count": 294,
+      "minutes": 1483,
+      "owner": "자인"
+    },
+    {
+      "name": "이제는 조명우시대",
+      "count": 262,
+      "minutes": 156,
+      "owner": "아빠"
+    },
+    {
+      "name": "쿠팡플레이 스포츠",
+      "count": 256,
+      "minutes": 589,
+      "owner": "아빠"
+    },
+    {
+      "name": "자까",
+      "count": 230,
+      "minutes": 902,
+      "owner": "미분류"
+    },
+    {
+      "name": "MBCNEWS",
+      "count": 219,
+      "minutes": 475,
+      "owner": "아빠"
+    },
+    {
+      "name": "빨강도깨비",
+      "count": 205,
+      "minutes": 226,
+      "owner": "아빠"
+    },
+    {
+      "name": "Half-Asleep Chris",
+      "count": 190,
+      "minutes": 558,
+      "owner": "아빠"
+    },
+    {
+      "name": "김준표",
+      "count": 182,
+      "minutes": 212,
+      "owner": "미분류"
+    },
+    {
+      "name": "Capi Reacts",
+      "count": 162,
+      "minutes": 1007,
+      "owner": "자인"
+    },
+    {
+      "name": "JTBC News",
+      "count": 138,
+      "minutes": 212,
+      "owner": "아빠"
+    },
+    {
+      "name": "김진짜 Real KIM",
+      "count": 122,
+      "minutes": 729,
+      "owner": "미분류"
+    },
+    {
+      "name": "Evolution Square",
+      "count": 113,
+      "minutes": 223,
+      "owner": "자인"
+    },
+    {
+      "name": "슛포러브",
+      "count": 109,
+      "minutes": 270,
+      "owner": "아빠"
+    },
+    {
+      "name": "메밀묵도리",
+      "count": 104,
+      "minutes": 586,
+      "owner": "미분류"
+    },
+    {
+      "name": "김동댕",
+      "count": 97,
+      "minutes": 108,
+      "owner": "미분류"
+    },
+    {
+      "name": "슬기로운 정치생활",
+      "count": 97,
+      "minutes": 65,
+      "owner": "아빠"
+    },
+    {
+      "name": "코믹한영어",
+      "count": 88,
+      "minutes": 127,
+      "owner": "아빠"
+    },
+    {
+      "name": "과학을보다",
+      "count": 82,
+      "minutes": 111,
+      "owner": "아빠"
+    },
+    {
+      "name": "브릿센트 x 영국영어",
+      "count": 78,
+      "minutes": 79,
+      "owner": "아빠"
+    },
+    {
+      "name": "த",
+      "count": 77,
+      "minutes": 31,
+      "owner": "미분류"
+    },
+    {
+      "name": "제발돼라 PleaseBee",
+      "count": 74,
+      "minutes": 375,
+      "owner": "미분류"
+    },
+    {
+      "name": "Tottenham Hotspur",
+      "count": 72,
+      "minutes": 115,
+      "owner": "아빠"
+    },
+    {
+      "name": "POCLANOS",
+      "count": 68,
+      "minutes": 370,
+      "owner": "아빠"
+    },
+    {
+      "name": "Tuvok12",
+      "count": 67,
+      "minutes": 24,
+      "owner": "자인"
+    }
+  ],
+  "hourly": [
+    {
+      "hour": 0,
+      "count": 1913,
+      "minutes": 1237,
+      "owner": {
+        "자인": 45,
+        "아빠": 320,
+        "미분류": 1548
+      }
+    },
+    {
+      "hour": 1,
+      "count": 346,
+      "minutes": 205,
+      "owner": {
+        "자인": 6,
+        "아빠": 72,
+        "미분류": 268
+      }
+    },
+    {
+      "hour": 2,
+      "count": 38,
+      "minutes": 55,
+      "owner": {
+        "자인": 2,
+        "아빠": 10,
+        "미분류": 26
+      }
+    },
+    {
+      "hour": 3,
+      "count": 0,
+      "minutes": 0,
+      "owner": {
+        "자인": 0,
+        "아빠": 0,
+        "미분류": 0
+      }
+    },
+    {
+      "hour": 4,
+      "count": 3,
+      "minutes": 6,
+      "owner": {
+        "자인": 0,
+        "아빠": 1,
+        "미분류": 2
+      }
+    },
+    {
+      "hour": 5,
+      "count": 79,
+      "minutes": 38,
+      "owner": {
+        "자인": 0,
+        "아빠": 16,
+        "미분류": 63
+      }
+    },
+    {
+      "hour": 6,
+      "count": 738,
+      "minutes": 522,
+      "owner": {
+        "자인": 20,
+        "아빠": 121,
+        "미분류": 597
+      }
+    },
+    {
+      "hour": 7,
+      "count": 4671,
+      "minutes": 3738,
+      "owner": {
+        "자인": 141,
+        "아빠": 799,
+        "미분류": 3731
+      }
+    },
+    {
+      "hour": 8,
+      "count": 2572,
+      "minutes": 2672,
+      "owner": {
+        "자인": 133,
+        "아빠": 460,
+        "미분류": 1979
+      }
+    },
+    {
+      "hour": 9,
+      "count": 1256,
+      "minutes": 1557,
+      "owner": {
+        "자인": 71,
+        "아빠": 231,
+        "미분류": 954
+      }
+    },
+    {
+      "hour": 10,
+      "count": 843,
+      "minutes": 1458,
+      "owner": {
+        "자인": 25,
+        "아빠": 195,
+        "미분류": 623
+      }
+    },
+    {
+      "hour": 11,
+      "count": 879,
+      "minutes": 1261,
+      "owner": {
+        "자인": 27,
+        "아빠": 192,
+        "미분류": 660
+      }
+    },
+    {
+      "hour": 12,
+      "count": 1235,
+      "minutes": 1916,
+      "owner": {
+        "자인": 113,
+        "아빠": 317,
+        "미분류": 805
+      }
+    },
+    {
+      "hour": 13,
+      "count": 846,
+      "minutes": 1805,
+      "owner": {
+        "자인": 58,
+        "아빠": 228,
+        "미분류": 560
+      }
+    },
+    {
+      "hour": 14,
+      "count": 907,
+      "minutes": 2155,
+      "owner": {
+        "자인": 112,
+        "아빠": 165,
+        "미분류": 630
+      }
+    },
+    {
+      "hour": 15,
+      "count": 828,
+      "minutes": 2553,
+      "owner": {
+        "자인": 139,
+        "아빠": 161,
+        "미분류": 528
+      }
+    },
+    {
+      "hour": 16,
+      "count": 1066,
+      "minutes": 2446,
+      "owner": {
+        "자인": 104,
+        "아빠": 276,
+        "미분류": 686
+      }
+    },
+    {
+      "hour": 17,
+      "count": 1784,
+      "minutes": 2342,
+      "owner": {
+        "자인": 133,
+        "아빠": 367,
+        "미분류": 1284
+      }
+    },
+    {
+      "hour": 18,
+      "count": 2259,
+      "minutes": 2519,
+      "owner": {
+        "자인": 98,
+        "아빠": 459,
+        "미분류": 1702
+      }
+    },
+    {
+      "hour": 19,
+      "count": 1751,
+      "minutes": 2192,
+      "owner": {
+        "자인": 58,
+        "아빠": 342,
+        "미분류": 1351
+      }
+    },
+    {
+      "hour": 20,
+      "count": 2160,
+      "minutes": 2812,
+      "owner": {
+        "자인": 92,
+        "아빠": 441,
+        "미분류": 1627
+      }
+    },
+    {
+      "hour": 21,
+      "count": 2503,
+      "minutes": 3158,
+      "owner": {
+        "자인": 89,
+        "아빠": 480,
+        "미분류": 1934
+      }
+    },
+    {
+      "hour": 22,
+      "count": 2669,
+      "minutes": 3290,
+      "owner": {
+        "자인": 134,
+        "아빠": 543,
+        "미분류": 1992
+      }
+    },
+    {
+      "hour": 23,
+      "count": 2854,
+      "minutes": 2542,
+      "owner": {
+        "자인": 70,
+        "아빠": 497,
+        "미분류": 2287
+      }
+    }
+  ],
+  "dow": [
+    {
+      "dow": 0,
+      "count": 5373,
+      "minutes": 6209
+    },
+    {
+      "dow": 1,
+      "count": 3966,
+      "minutes": 6114
+    },
+    {
+      "dow": 2,
+      "count": 5267,
+      "minutes": 6468
+    },
+    {
+      "dow": 3,
+      "count": 5663,
+      "minutes": 6416
+    },
+    {
+      "dow": 4,
+      "count": 4394,
+      "minutes": 6264
+    },
+    {
+      "dow": 5,
+      "count": 5276,
+      "minutes": 6073
+    },
+    {
+      "dow": 6,
+      "count": 4261,
+      "minutes": 4936
+    }
+  ],
+  "monthly": [
+    {
+      "ym": "2026-02",
+      "count": 6448,
+      "minutes": 6723
+    },
+    {
+      "ym": "2026-03",
+      "count": 9637,
+      "minutes": 10746
+    },
+    {
+      "ym": "2026-04",
+      "count": 9650,
+      "minutes": 11929
+    },
+    {
+      "ym": "2026-05",
+      "count": 7617,
+      "minutes": 11283
+    },
+    {
+      "ym": "2026-06",
+      "count": 848,
+      "minutes": 1798
+    }
+  ]
+}

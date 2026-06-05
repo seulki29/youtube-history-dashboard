@@ -1,0 +1,10 @@
+# 원본 Takeout 데이터는 절대 커밋하지 않는다 (개인정보)
+*.zip
+extracted/
+**/시청 기록.json
+**/검색 기록.json
+*.html.takeout
+
+# 공개되는 것은 docs/ 의 집계 데이터(data.json)와 대시보드뿐
+node_modules/
+.DS_Store

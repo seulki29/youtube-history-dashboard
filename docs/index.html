@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>YouTube 시청 기록 대시보드</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="bg-orbs"><span></span><span></span><span></span></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">YOUTUBE · WATCH HISTORY</div>
+    <h1>시청 기록 리포트</h1>
+    <p class="sub" id="period">데이터를 불러오는 중…</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- 핵심 지표 -->
+  <section class="stats" id="stats"></section>
+
+  <!-- Shorts vs 영상 -->
+  <section class="card span-6">
+    <div class="card-head"><h2>Shorts vs 영상</h2><span class="hint">건수 / 추정 시청시간</span></div>
+    <div class="split-grid">
+      <div class="donut-box"><canvas id="typeDonut"></canvas><div class="donut-center" id="typeCenter"></div></div>
+      <div id="typeLegend" class="legend"></div>
+    </div>
+  </section>
+
+  <!-- 아빠 vs 자인 -->
+  <section class="card span-6">
+    <div class="card-head"><h2>누가 봤을까 <span class="who-tag dad">아빠</span> <span class="who-tag jain">자인</span></h2><span class="hint">키워드 추정</span></div>
+    <div id="ownerBars" class="owner-bars"></div>
+    <p class="micro" id="ownerNote"></p>
+  </section>
+
+  <!-- 카테고리 -->
+  <section class="card span-12">
+    <div class="card-head"><h2>관심사 분류</h2><span class="hint">색상 = 시청자 추정</span></div>
+    <div id="catBars" class="cat-bars"></div>
+  </section>
+
+  <!-- 시간대 -->
+  <section class="card span-7">
+    <div class="card-head"><h2>시간대별 시청</h2><span class="hint">KST · 아빠/자인 누적</span></div>
+    <canvas id="hourChart" height="150"></canvas>
+  </section>
+
+  <!-- 요일 -->
+  <section class="card span-5">
+    <div class="card-head"><h2>요일별 시청</h2></div>
+    <canvas id="dowChart" height="150"></canvas>
+  </section>
+
+  <!-- 월별 -->
+  <section class="card span-12">
+    <div class="card-head"><h2>월별 추이</h2><span class="hint">건수 & 추정 시청시간</span></div>
+    <canvas id="monthChart" height="90"></canvas>
+  </section>
+
+  <!-- 채널 랭킹 -->
+  <section class="card span-12">
+    <div class="card-head"><h2>최다 시청 채널 TOP 25</h2></div>
+    <ol id="channelList" class="channel-list"></ol>
+  </section>
+</main>
+
+<footer class="foot wrap">
+  <p><strong>추정 방식 안내.</strong> Google Takeout에는 Shorts 여부와 실제 재생 시간이 들어있지 않습니다.
+  그래서 <em>다음 영상까지의 간격</em>으로 추정했습니다 — 간격 75초 이하면 Shorts, 그 이상이면 일반 영상으로 보고,
+  시청 시간은 다음 영상까지의 간격(최대 30분)으로 계산했습니다. 시청자(아빠/자인) 구분은 채널·제목 키워드 기반이며,
+  Shorts는 채널이 매우 다양해 상당수가 <em>미분류</em>로 남습니다. 모두 정확한 값이 아닌 <strong>추정치</strong>입니다.</p>
+  <p class="gen">생성일 <span id="gen"></span> · 원본 기록은 공개되지 않으며 집계 통계만 표시됩니다.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
